@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Redirecting to LPM page</title>
+    <script>
+        const handleEvent = (event) => {
+            const { data, origin } = event;
+            if (data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+            }
+            if (data.close) {
+                window.close()
+            }
+        }
+
+        addEventListener('message', handleEvent, false);
+    </script>
+    <body>
+        Redirecting to LPM page...
+    </body>
+</html>
