@@ -4,7 +4,6 @@
     <script>
         const handleEvent = (event) => {
             const { data, origin } = event;
-            console.log(data, origin);
             if (data.redirectUrl) {
                 window.location.href = data.redirectUrl;
             }
