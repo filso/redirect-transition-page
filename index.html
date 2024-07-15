@@ -1,5 +1,5 @@
 <html>
-<head>
+<head>    
     <title>Redirecting to LPM page</title>
     <script>
         const handleEvent = (event) => {            
@@ -12,7 +12,97 @@
         }
         window.addEventListener('message', handleEvent, false);
     </script>
+    <style>
+    .box {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        gap: 5em;
+    }
+    .loader {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .loader::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 5px solid #555;
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+    @keyframes rotate {
+      100%   {transform: rotate(360deg)}
+    }
+
+    @keyframes prixClipFix {
+        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+    }
+
+    .loader2 {
+  width: 64px;
+  height: 44px;
+  position: relative;
+  border: 5px solid #666;
+  border-radius: 8px;
+}
+.loader2::before {
+  content: '';
+  position: absolute;
+  border: 5px solid #666;
+  width: 32px;
+  height: 28px;
+  border-radius: 50% 50% 0 0;
+  left: 50%;
+  top: 0;
+  transform: translate(-50% , -100%)
+
+}
+.loader2::after {
+  content: '';
+  position: absolute;
+  transform: translate(-50% , -50%);
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #333;
+  box-shadow: 16px 0 #333, -16px 0 #333;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 16px 0 rgba(2, 2, 2, 0.25), -16px 0 rgba(0, 0, 0, 0.633);
+  }
+  50% {
+    background-color: rgb(165, 165, 165);
+    box-shadow: 16px 0 rgba(255, 255, 255, 0.25), -16px 0 rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 16px 0 rgb(130, 130, 130), -16px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
+    </style>
     <body>
-        Redirecting to LPM page...
+        <div class="box">
+            <span class="loader"></span>
+            <span class="loader2"></span>
+        </div>
     </body>
 </html>
